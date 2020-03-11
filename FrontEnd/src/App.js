@@ -13,39 +13,28 @@ class MyForm extends React.Component {
     };
   }
 
-
-//   async getDataAxios(){
-//     const response =
-//       await axios.get("http://localhost:10090/card/getall",      
-//       )
-//     console.log("axios  ",response.data)
-//     return response.data;
-// }
-
   componentDidMount() {
     fetch('http://localhost:10090/card/getall')
     .then(res => res.json())
     .then((data) => {
       this.setState({cards: data})
-      console.log(this.state.cards)
     })
-    .catch(console.log)
+    .catch()
   }
 
   async addCardDetails()
   {
-    const response = await fetch('http://localhost:10090/card/save', {
+    const response = await fetch('http://localhost:10090/card/add', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({"userName":this.state.userName,
                           "cardNumber":this.state.cardNumber,
                           "cardLimit":this.state.cardLimit}),
     })
-    console.log(await response.json())
   }
 
-  mySubmitHandler = (event) => {
-    //event.preventDefault();
+  validateCard = () =>
+  {
     let cardnumber = this.state.cardNumber;
     let arr = (cardnumber + '')
       .split('')
@@ -59,10 +48,17 @@ class MyForm extends React.Component {
       alert("Card number is not valid")
       return true;
     }
-      this.addCardDetails();
-     // this.componentDidMount();
   }
-//4485275742308327
+
+  mySubmitHandler = (event) => {
+      let result = this.validateCard();
+      if (result !== true)
+      {
+        this.addCardDetails();
+      }
+      this.componentDidMount();
+  }
+
   
   myChangeHandler = (event) => {
     let nam = event.target.name;
@@ -123,7 +119,7 @@ class MyForm extends React.Component {
                         <tr key={card.cardNumber}>
                             <td>{card.userName}</td>
                             <td>{card.cardNumber}</td>
-                            <td>£0</td>
+                            <td>£{card.cardBalance}</td>
                             <td>£{card.cardLimit}</td>
                         </tr>
                 )
