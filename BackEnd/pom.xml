@@ -5,8 +5,9 @@
 	<groupId>com.creditcardmanagement</groupId>
 	<artifactId>BackEnd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Springboot H2 database example</name>
-	<description>A tutorial on springboot and h2 database</description>
+	<packaging>war</packaging>
+	<name>Credit card application</name>
+	<description>An application to add and get credit card details</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -35,9 +36,34 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>SpringbootH2Database</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>com.creditcardmanagement.Appmain</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>CreditCardBackend</finalName>
 	</build>
+	
 </project>

@@ -9,8 +9,17 @@ public class Card {
     private Long cardNumber;
     private String userName;
     private int cardLimit;
+    private int cardBalance;
 
-    public Card() {
+    public int getCardBalance() {
+		return cardBalance;
+	}
+
+	public void setCardBalance(int cardBalance) {
+		this.cardBalance = cardBalance;
+	}
+
+	public Card() {
     }
 
     public Long getCardNumber() {
