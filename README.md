@@ -44,3 +44,15 @@ To run this application as docker image we have created a simple Dockerfile:
 4. `docker build -it -p 3000:3000 frontend/reactjs:latest`
 
 Note : Both Frontend and Backend services needs to be up and running for this application to work end to end
+
+
+
+
+###  Enhancements could have been done for complete solution
+1. Validation for Name and Limit input fields
+2. Error message against each field
+3. Validation for duplicate credit card number in backend
+4. Unit test cases for UI as well as backend
+5. Comments, to make the code more understandable
+6. Code quality check / improvement using Sonar
+
