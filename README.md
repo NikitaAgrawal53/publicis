@@ -26,7 +26,7 @@ To run this application as docker image we have created a simple Dockerfile:
 1. `cd Backend`
 2. `mvn clean package`
 3. `docker build -t backend/springboot .`
-4. `docker build -it -p 10090:10090 backend/springboot:latest`
+4. `docker run -it -p 10090:10090 backend/springboot:latest`
 
 ### FrontEnd
 Steps to run the application :
@@ -41,7 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 To run this application as docker image we have created a simple Dockerfile:
 1. `cd FrontEnd`
 3. `docker build -t frontend/reactjs .`
-4. `docker build -it -p 3000:3000 frontend/reactjs:latest`
+4. `docker run -it -p 3000:3000 frontend/reactjs:latest`
 
 Note : Both Frontend and Backend services needs to be up and running for this application to work end to end
 
